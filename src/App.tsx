@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { defaultTheme } from "./theme";
+import { defaultTheme } from "./config/theme";
 import { ThemeProvider } from "styled-components";
 import { HomePage } from "./page/HomePage";
 
