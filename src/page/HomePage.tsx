@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as LogoSVG } from "../asset/image/BuscalugaLogo.svg";
 import { SearchInput } from "../component/SearchInput";
+import { Space } from "../component/Space";
 import { MediumText } from "../component/Text";
 
 export function HomePage() {
@@ -9,9 +10,11 @@ export function HomePage() {
       <Layout>
         <div>
           <LogoSVG />
+          <Space y={21} />
           <MediumText>
             Aqui você <b>busca</b>, <b>aluga</b> e <b>compra</b> imóveis de todos os lugares!
           </MediumText>
+          <Space y={81} />
           <SearchInput />
           
         </div>
@@ -27,4 +30,5 @@ const Layout = styled.div`
   height: 100vh;
   text-align: center;
 
+  margin: 0 21px;
 `;

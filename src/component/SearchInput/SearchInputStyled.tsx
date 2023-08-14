@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SearchInputStyled = styled.div<any>`
+const SearchInputStyled = styled.div`
   min-width: 200px;
 
   background: #f1f1f1;
@@ -10,12 +10,13 @@ const SearchInputStyled = styled.div<any>`
   border-radius: 16px;
   border: none;
   display: block;
-  transition: all 0.3s;
+  // transition: all 0.3s;
 
   display: flex;
   align-items: center;
 
   input {
+    padding: 0;
     font-size: 16px;
     outline: none;
     border: none;
@@ -23,14 +24,24 @@ const SearchInputStyled = styled.div<any>`
     margin-left: 13px;
 
     &::placeholder {
-      color: #838383;
+      color: ${(p) => p.theme.color.gray};
       opacity: 1;
     }
   }
 
   &:hover {
+    color: ${(p) => p.theme.color.mainDarker};
     background: white;
-    border: 2px solid black;
+    outline: 2px solid ${(p) => p.theme.color.mainDarker};
+    
+    ::placeholder {
+      opacity: 0;
+      color: transparent
+    }
+
+    * {
+      stroke: ${(p) => p.theme.color.mainDarker};
+    }
   }
 `;
 

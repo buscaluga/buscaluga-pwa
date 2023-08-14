@@ -10,8 +10,9 @@ const SearchInput = (props: SearchInputProps) => {
       <SearchIcon/>
       <input
         type="text"
-        id="name"
+        name="buscaluga-search"
         placeholder="Cidade, bairro ou rua"
+        autoComplete="off"
       />
     </SearchInputStyled>
   );
