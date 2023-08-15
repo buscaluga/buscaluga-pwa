@@ -10,3 +10,5 @@ export const defaultTheme = {
         background: "#ffffff"
     }    
 }
+
+export type ThemeColor = keyof typeof defaultTheme.color;
