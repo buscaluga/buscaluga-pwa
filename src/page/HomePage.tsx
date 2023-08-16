@@ -11,7 +11,9 @@ export function HomePage() {
 
   return (
     <div>
-      <Layout $searchPositionY={searchContentRef.current?.getBoundingClientRect().y}>
+      <Layout
+        $searchPositionY={searchContentRef.current?.getBoundingClientRect().y}
+      >
         <div>
           <div className={"presentation-content " + (openSearch ? "hide" : "")}>
             <LogoSVG />
@@ -28,6 +30,7 @@ export function HomePage() {
             className={"search-content " + (openSearch ? "open" : "")}
           >
             <SearchInput
+              tagValue="+3"
               onOpen={() => {
                 setOpenSearch(true);
               }}

@@ -15,9 +15,13 @@ const SearchInputStyled = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  .tag-block {
+    display: block;
+  }
+
   .icon-button-block {
     // transition: all 0.3s;
-    opacity: 0;
+    display: none;
   }
 
   .search-block {
@@ -47,8 +51,12 @@ const SearchInputStyled = styled.div`
     background: white;
     outline: 2px solid ${(p) => p.theme.color.mainDarker};
 
+    .tag-block {
+      display: none;
+    }
+
     .icon-button-block {
-      opacity: 100;
+      display: block;
     }
 
     ::placeholder {
