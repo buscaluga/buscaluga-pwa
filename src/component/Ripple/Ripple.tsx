@@ -1,6 +1,7 @@
-import { useState, MouseEventHandler } from "react";
+import { useState, MouseEventHandler, PropsWithChildren } from "react";
 import RippleStyled from "./RippleStyled";
 import useDebouncedRippleCleanUp from "./useDebouncedRippleCleanUp";
+import { ThemeColor } from "../../config/theme";
 
 interface Ripple {
   x: number;
@@ -8,12 +9,18 @@ interface Ripple {
   size: number;
 }
 
-interface RippleProps {
-  duration: number;
-  color: string;
+interface RippleProps extends PropsWithChildren {
+  duration?: number;
+  color?: ThemeColor;
+  opacity?: string;
 }
 
-const Ripple = ({ duration = 850, color = "#fff" }: RippleProps) => {
+const Ripple = ({
+  duration = 1500,
+  color = "mainDefault",
+  opacity = "20%",
+  children,
+}: RippleProps) => {
   const [rippleArray, setRippleArray] = useState<Ripple[]>([]);
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
@@ -41,6 +48,7 @@ const Ripple = ({ duration = 850, color = "#fff" }: RippleProps) => {
     <RippleStyled
       $duration={duration}
       $color={color}
+      $opacity={opacity}
       onMouseDown={addRipple}
     >
       {rippleArray.length > 0 &&
@@ -57,8 +65,9 @@ const Ripple = ({ duration = 850, color = "#fff" }: RippleProps) => {
             />
           );
         })}
+      <div className="content">{children}</div>
     </RippleStyled>
   );
 };
 
-export default Ripple
+export default Ripple;

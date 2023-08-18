@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { ReactComponent as LogoSVG } from "../asset/image/BuscalugaLogo.svg";
+import { ReactComponent as LocationSVG } from "../asset/icon/Location.svg";
 import { SearchInput } from "../component/SearchInput";
 import { Space } from "../component/Space";
-import { MediumText } from "../component/Text";
+import { MediumText, SmallText } from "../component/Text";
 import { useRef, useState } from "react";
+import { ListItem } from "../component/ListItem";
 
 export function HomePage() {
   const [openSearch, setOpenSearch] = useState(false);
@@ -38,6 +40,29 @@ export function HomePage() {
                 setOpenSearch(false);
               }}
             />
+            <div className="search-result">
+              <ListItem
+                icon={<LocationSVG />}
+                title={
+                  <p>
+                    <b>Copa do Sul</b> - SC
+                  </p>
+                }
+                tagValue="blo"
+              />
+              <ListItem
+                icon={<LocationSVG />}
+                title={<b>Copacabana</b>}
+                subTitle={"Rio de Janeiro - RJ"}
+                tagValue="blo"
+              />
+              <ListItem
+                icon={<LocationSVG />}
+                title={<b>Avenida Nossa Senhora de Copacabana</b>}
+                subTitle={"Copacabana, Rio de Janeiro - RJ"}
+                tagValue="blo"
+              />
+            </div>
           </div>
         </div>
       </Layout>
@@ -62,6 +87,10 @@ const Layout = styled.div<any>`
     &.open {
       top: ${(p) => "-" + (p.$searchPositionY - 21) + "px"};
     }
+  }
+
+  .search-result {
+    margin-top: 5px;
   }
 
   .presentation-content {
