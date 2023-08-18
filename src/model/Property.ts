@@ -1,4 +1,10 @@
-export type PropertyType = "rent-monthly" | "rent-weekly" | "rent-daily" | "purchase";
+import {
+  CitySuggestions,
+  NeightborhoodSuggestions,
+  StreetSuggestions,
+} from "./SearchSuggestion";
+
+export type AcquisitionType = "rent" | "purchase";
 
 export interface Price {
   value: number;
@@ -8,7 +14,6 @@ export interface Price {
 
 export interface Source {
   name: string;
-  images: string[];
   page: string;
 }
 
@@ -16,18 +21,39 @@ export interface Address {
   state: string;
   city: string;
   neighborhood: string;
-  street: string;
+  street?: string;
   number?: string;
   complement?: string;
 }
 
 export interface Property {
-  type: PropertyType;
-  bathroom: number;
-  bedroom: number;
+  aquisitionType: AcquisitionType;
+  rentFrequency?: "monthly" | "weekly" | "daily";
+  residentialType?: string;
+  images: string[];
+  bathroomQty: number;
+  bedroomQty: number;
+  parkingQty: number;
+  sizeArea: number;
   address: Address;
   price: Price;
   source: Source;
 }
 
-export default Property;
+export interface PropertiesResponse {
+  properties: Property[];
+  quantity?: number;
+  nextPageToken?: string;
+}
+
+export interface PropertiesBody {
+  acquisitionType: AcquisitionType;
+  location: {
+    cities: CitySuggestions;
+    neighborhoods: NeightborhoodSuggestions;
+    streets: StreetSuggestions;
+  };
+  filter: unknown;
+  sortBy: string;
+  pageToken: string;
+}

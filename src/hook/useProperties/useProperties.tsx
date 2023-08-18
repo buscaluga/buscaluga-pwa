@@ -1,25 +1,14 @@
-import { Property } from "../../model/Property";
-import { useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { PropertiesBody } from "../../model/Property";
 import { fetchProperties } from "./api";
 
-type SetProperties = React.Dispatch<React.SetStateAction<Property[]>>;
+export const propertiesQueryKey = "properties-query-key";
 
-async function setStateProperty(setProperties: SetProperties) {
-  const response = await fetchProperties();
-
-  setProperties(response.properties);
-}
-
-function useProperties() {
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [isStarted, setIsStarted] = useState(false);
-
-  if (!isStarted) {
-    setStateProperty(setProperties);
-    setIsStarted(true);
-  }
-
-  return { properties, setIsStarted };
-}
+const useProperties = (body: PropertiesBody) =>
+  useInfiniteQuery({
+    queryKey: [propertiesQueryKey],
+    queryFn: (ctx) => fetchProperties({ ...body, pageToken: ctx.pageParam }),
+    getNextPageParam: (lastPage, pages) => lastPage.nextPageToken,
+  });
 
 export default useProperties;

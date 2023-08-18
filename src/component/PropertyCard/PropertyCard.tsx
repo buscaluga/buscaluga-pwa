@@ -9,8 +9,7 @@ interface PropertyCardProps {
 }
 
 function PropertyCard({ property }: PropertyCardProps) {
-  const { address, price, source } = property;
-  const { images } = source;
+  const { address, price, images } = property;
 
   return (
     <PropertyCardStyled>
