@@ -49,9 +49,6 @@ const SearchInput = ({
       tabIndex={1}
       className={isClose ? "" : "open"}
       onClick={onClick}
-      style={{
-        pointerEvents: !isClose ? "none" : undefined,
-      }}
     >
       <div className="search-block">
         <SearchIcon />
@@ -63,9 +60,6 @@ const SearchInput = ({
           placeholder="Cidade, bairro ou rua"
           autoComplete="off"
           ref={inputRef}
-          onBlur={() => {
-            setIsClose(true);
-          }}
         />
       </div>
       <div className="icon-button-block">
