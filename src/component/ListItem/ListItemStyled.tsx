@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface SearchInputStyledProps {
+interface ListItemStyledProps {
     $horizontalMargin: string;
 }
 
-const ListItemStyled = styled.div<SearchInputStyledProps>`
+const ListItemStyled = styled.div<ListItemStyledProps>`
   margin: 0 -${p => p.$horizontalMargin};
   width: calc(100% + ${p => p.$horizontalMargin} * 2);
 
@@ -16,7 +16,7 @@ const ListItemStyled = styled.div<SearchInputStyledProps>`
 
   .list-item-wrapper {
     margin: 0 ${p => p.$horizontalMargin};
-
+    min-height: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;

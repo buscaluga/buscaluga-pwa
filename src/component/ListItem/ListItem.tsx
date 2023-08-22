@@ -11,7 +11,6 @@ interface ListItemProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   iconButton?: any;
   horizontalMargin?: string;
-  fillWidth?: boolean;
 }
 
 const ListItem = ({
@@ -36,7 +35,7 @@ const ListItem = ({
               <SmallText>{title}</SmallText>
               <SmallText>{subTitle}</SmallText>
             </div>
-            <Tag type="main">{tagValue}</Tag>
+            {tagValue && <Tag type="main">{tagValue}</Tag>}
           </div>
           <div className="right">{iconButton}</div>
         </div>
