@@ -1,21 +1,25 @@
 import styled from "styled-components";
 import { ReactComponent as LogoSVG } from "../asset/image/BuscalugaLogo.svg";
-import { ReactComponent as LocationSVG } from "../asset/icon/Location.svg";
 import { SearchInput } from "../component/SearchInput";
 import { Space } from "../component/Space";
 import { MediumText, SmallText } from "../component/Text";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { ListItem } from "../component/ListItem";
+import { SuggestionsContainer } from "../container/SuggestionsContainer";
 
 export function HomePage() {
   const [openSearch, setOpenSearch] = useState(false);
   const searchContentRef = useRef<HTMLDivElement>(null);
 
+  const searchPositionY = useMemo(
+    () => searchContentRef.current?.getBoundingClientRect().y,
+    [openSearch]
+  );
+  console.log("searchContentRef", searchPositionY);
+
   return (
     <div>
-      <Layout
-        $searchPositionY={searchContentRef.current?.getBoundingClientRect().y}
-      >
+      <Layout $searchPositionY={searchPositionY}>
         <div>
           <div className={"presentation-content " + (openSearch ? "hide" : "")}>
             <LogoSVG />
@@ -40,28 +44,15 @@ export function HomePage() {
                 setOpenSearch(false);
               }}
             />
-            <div className="search-result">
-              <ListItem
-                icon={<LocationSVG />}
-                title={
-                  <p>
-                    <b>Copa do Sul</b> - SC
-                  </p>
-                }
-                tagValue="blo"
-              />
-              <ListItem
-                icon={<LocationSVG />}
-                title={<b>Copacabana</b>}
-                subTitle={"Rio de Janeiro - RJ"}
-                tagValue="blo"
-              />
-              <ListItem
-                icon={<LocationSVG />}
-                title={<b>Avenida Nossa Senhora de Copacabana</b>}
-                subTitle={"Copacabana, Rio de Janeiro - RJ"}
-                tagValue="blo"
-              />
+
+            <div
+              style={{
+                width: "100%",
+                display: openSearch ? "block" : "none",
+                position: "absolute",
+              }}
+            >
+              {<SuggestionsContainer />}
             </div>
           </div>
         </div>
@@ -80,12 +71,10 @@ const Layout = styled.div<any>`
   margin: 0 21px;
 
   .search-content {
-    position: relative;
     transition: all 1s;
-    top: 0px;
 
     &.open {
-      top: ${(p) => "-" + (p.$searchPositionY - 21) + "px"};
+      transform: translateY(${(p) => "-" + (p.$searchPositionY - 21) + "px"});
     }
   }
 

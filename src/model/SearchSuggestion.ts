@@ -1,16 +1,26 @@
+export type Suggestions<
+  S extends CitySuggestion | NeightborhoodSuggestion | StreetSuggestion
+> = S[];
+
 export interface SuggestionsResponse {
-  suggestions: CitySuggestions | NeightborhoodSuggestions | StreetSuggestions;
-  nextPageToken: string;
+  suggestions: Suggestions<any>;
+  nextPageToken?: string;
 }
 
-export type CitySuggestions = string[];
+export type CitySuggestion = string;
 
-export type NeightborhoodSuggestions = {
+export type NeightborhoodSuggestion = {
   name: string;
   city: string;
-}[];
+};
 
-export type StreetSuggestions = {
+export type StreetSuggestion = {
   name: string;
   neightborhood: string;
-}[];
+};
+
+export interface SuggestionParams {
+  term: string;
+  location: "city" | "neighborhood" | "street";
+  pageToken?: string;
+}

@@ -1,7 +1,7 @@
 import {
-  CitySuggestions,
-  NeightborhoodSuggestions,
-  StreetSuggestions,
+  CitySuggestion,
+  NeightborhoodSuggestion,
+  StreetSuggestion,
 } from "./SearchSuggestion";
 
 export type AcquisitionType = "rent" | "purchase";
@@ -49,11 +49,11 @@ export interface PropertiesResponse {
 export interface PropertiesBody {
   acquisitionType: AcquisitionType;
   location: {
-    cities: CitySuggestions;
-    neighborhoods: NeightborhoodSuggestions;
-    streets: StreetSuggestions;
+    cities?: CitySuggestion[];
+    neighborhoods?: NeightborhoodSuggestion[];
+    streets?: StreetSuggestion[];
   };
-  filter: unknown;
-  sortBy: string;
-  pageToken: string;
+  filter?: unknown;
+  sortBy?: string;
+  pageToken?: string;
 }

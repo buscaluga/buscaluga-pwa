@@ -6,7 +6,7 @@ export const propertiesQueryKey = "properties-query-key";
 
 const useProperties = (body: PropertiesBody) =>
   useInfiniteQuery({
-    queryKey: [propertiesQueryKey],
+    queryKey: [propertiesQueryKey, body],
     queryFn: (ctx) => fetchProperties({ ...body, pageToken: ctx.pageParam }),
     getNextPageParam: (lastPage, pages) => lastPage.nextPageToken,
   });
