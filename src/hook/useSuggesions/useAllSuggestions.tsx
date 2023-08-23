@@ -10,7 +10,7 @@ export const suggestionsQueryKey = "suggestions-query-key";
 
 const useAllSuggestions = (term: string) => {
   const citiesQuery = useSuggestions({ location: "city", term });
-  const neighboorhoodsQuery = useSuggestions({
+  const neighborhoodsQuery = useSuggestions({
     location: "neighborhood",
     term,
   });
@@ -22,12 +22,12 @@ const useAllSuggestions = (term: string) => {
     [citiesQuery]
   );
 
-  const allNeighboorhoods = useMemo(
+  const allNeighborhoods = useMemo(
     () =>
-      neighboorhoodsQuery.data?.pages.flatMap(
+      neighborhoodsQuery.data?.pages.flatMap(
         (p) => p.suggestions
       ) as NeightborhoodSuggestion[],
-    [neighboorhoodsQuery]
+    [neighborhoodsQuery]
   );
 
   const allStreets = useMemo(
@@ -38,11 +38,14 @@ const useAllSuggestions = (term: string) => {
     [streetsQuery]
   );
 
-  return [
-    { allCities, citiesQuery },
-    { allNeighboorhoods, neighboorhoodsQuery },
-    { allStreets, streetsQuery },
-  ];
+  return {
+    allCities,
+    citiesQuery,
+    allNeighborhoods,
+    neighborhoodsQuery,
+    allStreets,
+    streetsQuery,
+  };
 };
 
 export default useAllSuggestions;

@@ -4,7 +4,7 @@ import { PropertiesBody } from "../model/Property";
 import { SmallText } from "../component/Text";
 
 export function PropertiesContainer() {
-  const { data } = useProperties({} as PropertiesBody);
+  const { data } = useProperties({}, {} as PropertiesBody);
   const properties = data?.pages.flatMap((p) => p.properties);
 
   return (

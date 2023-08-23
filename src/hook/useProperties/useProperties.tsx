@@ -1,13 +1,14 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { PropertiesBody } from "../../model/Property";
+import { PropertiesBody, PropertiesParams } from "../../model/Property";
 import { fetchProperties } from "./api";
 
 export const propertiesQueryKey = "properties-query-key";
 
-const useProperties = (body: PropertiesBody) =>
+const useProperties = (params: PropertiesParams, body: PropertiesBody) =>
   useInfiniteQuery({
     queryKey: [propertiesQueryKey, body],
-    queryFn: (ctx) => fetchProperties({ ...body, pageToken: ctx.pageParam }),
+    queryFn: (ctx) =>
+      fetchProperties({ ...params, pageToken: ctx.pageParam }, body),
     getNextPageParam: (lastPage, pages) => lastPage.nextPageToken,
   });
 

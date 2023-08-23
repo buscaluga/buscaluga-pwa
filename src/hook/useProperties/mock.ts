@@ -16,7 +16,6 @@ export const propertiesBody: PropertiesBody = {
   },
   filter: {},
   sortBy: "more-relevant",
-  pageToken: "abcd",
 };
 
 export const propertiesResponsePaginated: PropertiesResponse[] = [

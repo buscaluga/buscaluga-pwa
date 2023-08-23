@@ -1,10 +1,11 @@
+import { PageParams, PageResponse } from "./Page";
+
 export type Suggestions<
   S extends CitySuggestion | NeightborhoodSuggestion | StreetSuggestion
 > = S[];
 
-export interface SuggestionsResponse {
+export interface SuggestionsResponse extends PageResponse {
   suggestions: Suggestions<any>;
-  nextPageToken?: string;
 }
 
 export type CitySuggestion = string;
@@ -19,8 +20,7 @@ export type StreetSuggestion = {
   neightborhood: string;
 };
 
-export interface SuggestionParams {
+export interface SuggestionParams extends PageParams {
   term: string;
   location: "city" | "neighborhood" | "street";
-  pageToken?: string;
 }

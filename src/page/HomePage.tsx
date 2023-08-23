@@ -6,6 +6,7 @@ import { MediumText, SmallText } from "../component/Text";
 import { useMemo, useRef, useState } from "react";
 import { ListItem } from "../component/ListItem";
 import { SuggestionsContainer } from "../container/SuggestionsContainer";
+import { useSearchContext } from "../context/SearchContext";
 
 export function HomePage() {
   const [openSearch, setOpenSearch] = useState(false);
@@ -16,6 +17,7 @@ export function HomePage() {
     [openSearch]
   );
   console.log("searchContentRef", searchPositionY);
+  const { search, setSearch } = useSearchContext();
 
   return (
     <div>
@@ -37,6 +39,10 @@ export function HomePage() {
           >
             <SearchInput
               tagValue="+3"
+              value={search.term}
+              onChange={(e) => {
+                setSearch((prev) => ({ ...prev, term: e.target.value }));
+              }}
               onOpen={() => {
                 setOpenSearch(true);
               }}

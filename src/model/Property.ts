@@ -1,3 +1,4 @@
+import { PageParams, PageResponse } from "./Page";
 import {
   CitySuggestion,
   NeightborhoodSuggestion,
@@ -40,11 +41,12 @@ export interface Property {
   source: Source;
 }
 
-export interface PropertiesResponse {
+export interface PropertiesResponse extends PageResponse {
   properties: Property[];
   quantity?: number;
-  nextPageToken?: string;
 }
+
+export interface PropertiesParams extends PageParams {}
 
 export interface PropertiesBody {
   acquisitionType: AcquisitionType;
@@ -55,5 +57,4 @@ export interface PropertiesBody {
   };
   filter?: unknown;
   sortBy?: string;
-  pageToken?: string;
 }
