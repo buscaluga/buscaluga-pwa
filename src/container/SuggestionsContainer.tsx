@@ -3,6 +3,7 @@ import { SuggestionsContent } from "../component/SuggestionsContent";
 import { useSearchContext } from "../context/SearchContext";
 import { useAllSuggestions } from "../hook/useSuggesions";
 import SuggestionsResult from "../asset/lazy-load/SuggestionsResult";
+import { SmallText } from "../component/Text";
 
 export function SuggestionsContainer() {
   const { search } = useSearchContext();
@@ -19,6 +20,10 @@ export function SuggestionsContainer() {
 
   const everyIsLoading =
     isLoadingCities && isLoadingNeighborhoods && isLoadingStreets;
+
+  if (term === "") {
+    return <SmallText>Faça sua busca!</SmallText>
+  }
 
   if (everyIsLoading) {
     return (
