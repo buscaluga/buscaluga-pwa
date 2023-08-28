@@ -4,8 +4,9 @@ interface LazyLoadStyledProps {}
 
 const LazyLoadStyled = styled.div<LazyLoadStyledProps>`
   text-align: left;
+  position: sticky;
 
-  div {
+  .rect {
     opacity: 0.8;
     background: linear-gradient(
       135deg,
@@ -19,16 +20,16 @@ const LazyLoadStyled = styled.div<LazyLoadStyledProps>`
       rgba(211, 223, 232, 0.6) 80%,
       rgba(211, 223, 232, 0.6) 80%
     );
-    background-size: 1200% 1200%;
+    background-size: calc(10 * 400%) calc(2 * 400%);
 
-    animation: AnimationName 2.5s ease infinite reverse;
+    animation: AnimationName 2s ease infinite reverse;
   }
 
   @keyframes AnimationName {
     0% {
       background-position: 0% 92%;
     }
-    50% {
+    10% {
       background-position: 100% 9%;
     }
     100% {

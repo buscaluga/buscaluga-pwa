@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface ListItemStyledProps {
     $horizontalMargin: string;
+    $verticalPadding: string;
 }
 
 const ListItemStyled = styled.div<ListItemStyledProps>`
@@ -11,12 +12,11 @@ const ListItemStyled = styled.div<ListItemStyledProps>`
   text-align: left;
 
   > div {
-    padding: 8px 0;
+    padding: ${p => p.$verticalPadding} 0;
   }
 
   .list-item-wrapper {
     margin: 0 ${p => p.$horizontalMargin};
-    min-height: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;

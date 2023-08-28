@@ -11,6 +11,7 @@ interface ListItemProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   iconButton?: any;
   horizontalMargin?: string;
+  verticalPadding?: string;
 }
 
 const ListItem = ({
@@ -21,11 +22,13 @@ const ListItem = ({
   iconButton,
   onClick,
   horizontalMargin = "21px",
+  verticalPadding = "8px"
 }: ListItemProps) => {
   return (
     <ListItemStyled
       onClick={onClick}
       $horizontalMargin={horizontalMargin}
+      $verticalPadding={verticalPadding}
     >
       <Ripple>
         <div className="list-item-wrapper">

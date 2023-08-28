@@ -1,17 +1,23 @@
 import styled from "styled-components";
+import { ThemeColor } from "../../config/theme";
 
-const RippleStyled = styled.div<any>`
+interface RippleStyledProps {
+  $duration: number;
+  $color: ThemeColor;
+  $opacity: string;
+}
+
+const RippleStyled = styled.div<RippleStyledProps>`
   position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1;
-  // display: inline-block;
   overflow: hidden;
-  width: 100%;
+  cursor: pointer;
 
-  & > .content * {
+  & > .content {
     z-index: 999;
   }
 

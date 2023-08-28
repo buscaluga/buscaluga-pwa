@@ -1,24 +1,38 @@
+import { CSSProperties } from "react";
+
 interface RectProps {
   width: string;
   height: string;
   rx: string;
   x?: string;
   y?: string;
+  isAbsolute?: boolean;
 }
 
-const Rect = ({ x = "0", y = "0", width, height, rx }: RectProps) => {
+const Rect = ({
+  x = "0",
+  y = "0",
+  width,
+  height,
+  rx,
+  isAbsolute = true,
+}: RectProps) => {
+  const positionStyle: CSSProperties = isAbsolute
+    ? { position: "absolute", top: y + "px", left: x + "px" }
+    : {};
+
   return (
-    <div
+    <span
+      className="rect"
       style={{
-        position: "absolute",
-        top: y + "px",
-        left: x + "px",
+        ...positionStyle,
         width: width + "px",
         height: height + "px",
         borderRadius: rx + "px",
+        display: "block"
       }}
-    ></div>
+    ></span>
   );
 };
 
-export default Rect
+export default Rect;

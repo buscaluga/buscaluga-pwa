@@ -23,6 +23,7 @@ const IconButtonStyled = styled.div<SearchInputStyledProps>`
     height: 100%;
     position: relative;
     z-index: 1;
+    cursor: pointer;
 
     &:hover + .circle-wrapper > .circle {
       width: ${(p) => p.$size + "px"};
