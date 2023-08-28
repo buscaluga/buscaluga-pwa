@@ -1,5 +1,5 @@
 body { 
-
+  -webkit-tap-highlight-color: transparent;
   margin: 0;
   font-family: 'Poppins';
   -webkit-font-smoothing: antialiased;
