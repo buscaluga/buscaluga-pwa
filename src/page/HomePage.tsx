@@ -24,6 +24,15 @@ export function HomePage() {
           result={<SuggestionsContainer />}
         />
       </div>
+      {/* <Button type="primary">
+        <ConfigureSVG /> Filtrar <Tag type="primary-button">2</Tag>
+      </Button>
+      <Button type="secondary">
+        <ConfigureSVG /> Mais Relevante
+      </Button>
+      <Button type="subtitle">
+        <ConfigureSVG /> Contactar
+      </Button> */}
     </PageStyled>
   );
 }

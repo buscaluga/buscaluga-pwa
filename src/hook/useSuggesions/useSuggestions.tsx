@@ -12,7 +12,7 @@ const useSuggestions = (params: SuggestionParams) =>
       const fetch = switchMockAction(fetchSuggestions, fetchSuggestionsMock);
       return fetch({ ...params, pageToken: ctx.pageParam });
     },
-    getNextPageParam: (lastPage, pages) => lastPage.nextPageToken,
+    getNextPageParam: (lastPage, pages) => lastPage?.nextPageToken,
   });
 
 export default useSuggestions;

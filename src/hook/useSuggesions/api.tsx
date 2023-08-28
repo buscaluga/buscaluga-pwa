@@ -10,18 +10,20 @@ const API_URL = process.env.REACT_APP_PROPERTIES_API_URL;
 const API_URL_SUGGESTIONS = `${API_URL}/suggestions`;
 
 export async function fetchSuggestions(params: SuggestionParams) {
-  const response = await axios.get<SuggestionsResponse>(API_URL_SUGGESTIONS, {
-    params,
-  });
+  const response = await axios.get<SuggestionsResponse | undefined>(
+    API_URL_SUGGESTIONS,
+    {
+      params,
+    }
+  );
 
   return response.data;
 }
 
 export async function fetchSuggestionsMock(
   params: SuggestionParams
-): Promise<SuggestionsResponse> {
-  const { index } = getPageTokenMock();
-
+): Promise<SuggestionsResponse | undefined> {
+  const { index } = getPageTokenMock(params.pageToken);
   if (params.term === "") {
     return { suggestions: [] };
   }
