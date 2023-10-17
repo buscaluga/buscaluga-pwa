@@ -18,6 +18,7 @@ export function SearchContentContainer({
     <SearchContent
       isOpen={search.isOpen}
       header={header}
+      result={result}
       search={
         <SearchInput
           tagValue={search.tagValue}
@@ -33,7 +34,6 @@ export function SearchContentContainer({
           }}
         />
       }
-      result={result}
     />
   );
 }

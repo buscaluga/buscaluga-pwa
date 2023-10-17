@@ -4,12 +4,33 @@ import { Space } from "../component/Space";
 import { MediumText } from "../component/Text";
 import { SuggestionsContainer } from "../container/SuggestionsContainer";
 import { SearchContentContainer } from "../container/SearchContentContainer";
+import { Tabs } from "../component/Tabs";
 
 export function HomePage() {
   return (
     <PageStyled>
+      {/* <Tabs
+        index={0}
+        tabs={[
+          {
+            title: "Alugar",
+          },
+          {
+            title: "Comprar",
+          },
+        ]}
+      /> */}
       <div>
-        <SearchContentContainer
+        <>
+          <LogoSVG />
+          <Space y={21} />
+          <MediumText>
+            Aqui você <b>busca</b>, <b>aluga</b> e <b>compra</b> imóveis de
+            todos os lugares!
+          </MediumText>
+          <Space y={81} />
+        </>
+        {/* <SearchContentContainer
           header={
             <>
               <LogoSVG />
@@ -22,7 +43,7 @@ export function HomePage() {
             </>
           }
           result={<SuggestionsContainer />}
-        />
+        /> */}
       </div>
       {/* <Button type="primary">
         <ConfigureSVG /> Filtrar <Tag type="primary-button">2</Tag>
